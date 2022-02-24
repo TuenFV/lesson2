@@ -11,3 +11,10 @@ import "channels"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+require("@popperjs/core")
+
+import "bootstrap"
+
+// The stylesheet location we created earlier
+require("../stylesheets/application.scss")
