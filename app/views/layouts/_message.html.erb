@@ -1,11 +1,10 @@
 <% if flash.any? %>
   <% flash.each do |type, msg| %>
-    <% case type %>
-    <% when "notice" %>
-          <div><%= msg %></div>
-        </div>
-    <% when "alert" %>
-          <div><%= msg %></div>
+    <% if type == "notice" %>
+      <div class="alert alert-success d-flex align-items-center alert-dismissible" role="alert" >
+        <%= msg %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
     <% end %>
   <% end %>
 <% end %>

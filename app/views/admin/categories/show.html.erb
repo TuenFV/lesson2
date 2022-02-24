@@ -1,17 +1,15 @@
 <div>
-  <div>
-    <strong>About this category:</strong>
+  <div class="card" >
+    <div class="card-header">
+      <strong>Category:</strong>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title"><%= @category.name %></h5>
+      <p class="card-text"><%= @category.description %></p>
+      <%= link_to 'Back', admin_categories_path, class:"btn btn-outline-light btn-sm" %>
+    </div>
   </div>
-  <div>
-    Name:
-    <%= @category.name %>
-  <div/>
-  <div>
-    Description:
-    <%= @category.description %>
-  </div>
+  <br/>
+  <%= link_to 'Edit', edit_admin_category_path(@category), class:"btn btn-primary btn-sm" %>
+  <%= link_to 'Destroy', admin_category_path(@category), class:"btn btn-sm btn-outline-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
 </div>
-<%= link_to 'Back', admin_categories_path %>
-<br/>
-<%= link_to 'Edit', edit_admin_category_path(@category) %>
-<%= link_to 'Destroy', admin_category_path(@category), method: :delete, data: { confirm: 'Are you sure?' } %>

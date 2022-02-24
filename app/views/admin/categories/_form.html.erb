@@ -1,16 +1,26 @@
 <%= form_with(model: [:admin, category], local: true) do |f| %>
+  <% if category.errors.any? %>
+    <div style="color: red">
+      <h6><%= pluralize(category.errors.count, "error") %> prohibited this category from being saved:</h6>
 
-  <div>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+      <ul>
+        <% category.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="mb-3" >
+    <h6>Categorty name:</h6>
+    <%= f.text_field :name, class:"form-control" %>
   </div>
   
-  <div>
-    <%= f.label :description %>
-    <%= f.text_area :description %>
+  <div class="mb-3" >
+    <h6>Description:</h6>
+    <%= f.text_area :description, class:"form-control", rows:"3" %>
   </div>
   
-  <br/>
   <div>
     <%= f.submit %>
   </div>
