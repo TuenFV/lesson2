@@ -1,0 +1,11 @@
+<% if flash.any? %>
+  <% flash.each do |type, msg| %>
+    <% case type %>
+    <% when "notice" %>
+          <div><%= msg %></div>
+        </div>
+    <% when "alert" %>
+          <div><%= msg %></div>
+    <% end %>
+  <% end %>
+<% end %>

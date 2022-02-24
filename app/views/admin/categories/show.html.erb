@@ -1,0 +1,17 @@
+<div>
+  <div>
+    <strong>About this category:</strong>
+  </div>
+  <div>
+    Name:
+    <%= @category.name %>
+  <div/>
+  <div>
+    Description:
+    <%= @category.description %>
+  </div>
+</div>
+<%= link_to 'Back', admin_categories_path %>
+<br/>
+<%= link_to 'Edit', edit_admin_category_path(@category) %>
+<%= link_to 'Destroy', admin_category_path(@category), method: :delete, data: { confirm: 'Are you sure?' } %>
