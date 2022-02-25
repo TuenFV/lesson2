@@ -3,6 +3,11 @@ class Admin::ProductsController < ApplicationController
 
   def index
     @products = Product.all
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @products.to_csv, filename: "products-#{Date.today}.csv" }
+    end
   end
 
   def new
@@ -11,6 +16,7 @@ class Admin::ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
+    @product.product_category = @product.category.name
     if @product.save
       flash[:notice] = "Product was sucessfully added!"
       redirect_to admin_product_path(@product)
@@ -42,7 +48,7 @@ class Admin::ProductsController < ApplicationController
 
   private
     def product_params
-      product_params = params.require(:product).permit(:name, :description, :category_id, :stock, :price)
+      product_params = params.require(:product).permit(:name, :description, :category_id, :product_category, :stock, :price)
     end
 
     def set_product
