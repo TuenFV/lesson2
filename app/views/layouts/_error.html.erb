@@ -1,0 +1,10 @@
+<% if this_model.errors.any? %>
+  <div style="color: red">
+    <h6><%= pluralize(this_model.errors.count, "error") %> prohibited this category from being saved:</h6>
+    <ul>
+      <% this_model.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
