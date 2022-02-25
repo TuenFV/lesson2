@@ -1,23 +1,26 @@
 <h1>All Categories</h1>
 <br/>
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Action</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @categories.each do |category| %>
+<div class="container">
+  <table class="table table-sm table-striped table-bordered table-hover">
+    <thead class="table-dark">
       <tr>
-        <td><%= category.name %></td>
-        <td><%= category.description %></td>
-        <td>
-          <%= link_to 'Show', admin_category_path(category) %>
-        </td>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Action</th>
       </tr>
-    <% end%>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @categories.each do |category| %>
+        <tr>
+          <td><%= category.name %></td>
+          <td><%= category.description %></td>
+          <td>
+            <%= link_to 'Show', admin_category_path(category), class:"btn btn-light" %>
+          </td>
+        </tr>
+      <% end%>
+    </tbody>
+  </table>
+</div>
+
