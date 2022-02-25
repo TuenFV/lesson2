@@ -1,15 +1,5 @@
 <%= form_with(model: [:admin, category], local: true) do |f| %>
-  <% if category.errors.any? %>
-    <div style="color: red">
-      <h6><%= pluralize(category.errors.count, "error") %> prohibited this category from being saved:</h6>
-
-      <ul>
-        <% category.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render 'layouts/error', this_model: @category %>
   
   <div class="mb-3" >
     <h6>Categorty name:</h6>

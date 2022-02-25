@@ -1,0 +1,31 @@
+<div class="container">
+	<h1 class="text-center">All Products</h1>
+  <p align="right"><%= link_to 'Download (csv)', admin_products_path(format: 'csv'), class:"btn btn-sm btn-info" %></p>
+  <table class="table table-sm table-striped table-bordered table-hover align-middle">
+    <thead class="table-dark text-center">
+      <tr>
+        <th>Product Name</th>
+        <th>Description</th>
+        <th>Category</th>
+        <th>Stock</th>
+        <th>Price</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @products.each do |product| %>
+        <tr>
+          <td><%= product.name %></td>
+          <td><%= product.description %></td>
+          <td class="text-center"><%= product.category.name %></td>
+          <td class="text-center"><%= product.stock %></td>
+          <td class="text-center"><%= number_to_vnd(product.price) %></td>
+          <td class="text-center">
+            <%= link_to 'Show', admin_product_path(product), class:"btn btn-light" %>
+          </td>
+        </tr>
+      <% end%>
+    </tbody>
+  </table>
+</div>

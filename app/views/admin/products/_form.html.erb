@@ -1,0 +1,32 @@
+<%= form_with(model: [:admin, product], local: true) do |f| %>
+  <%= render 'layouts/error', this_model: @product %>
+  
+  <div class="mb-3" >
+    <h6>Product name:</h6>
+    <%= f.text_field :name, class:"form-control" %>
+  </div>
+  
+  <div class="mb-3" >
+    <h6>Description:</h6>
+    <%= f.text_area :description, class:"form-control", rows:"3" %>
+  </div>
+
+  <div class="mb-3" >
+    <strong>Category:</strong>
+    <%= f.collection_select :category_id, Category.order(:name), :id, :name %>
+  </div>
+
+  <div class="mb-3">
+    <strong>Stock:</strong>
+    <%= f.number_field :stock %>
+  </div>
+
+  <div class="mb-3">
+    <strong>Price:</strong>
+    <%= f.number_field :price %>
+  </div>
+
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>
