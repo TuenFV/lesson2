@@ -46,6 +46,12 @@ class Admin::ProductsController < ApplicationController
     redirect_to admin_products_path
   end
 
+  def import
+    Product.import_file(params[:file])
+    redirect_to root_path
+    flash[:notice] = "Data was sucessfully imported!"
+  end
+
   private
     def product_params
       product_params = params.require(:product).permit(:name, :description, :category_id, :product_category, :stock, :price)

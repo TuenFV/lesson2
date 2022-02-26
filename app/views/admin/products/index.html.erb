@@ -1,6 +1,14 @@
 <div class="container">
 	<h1 class="text-center">All Products</h1>
-  <p align="right"><%= link_to 'Download (csv)', admin_products_path(format: 'csv'), class:"btn btn-sm btn-info" %></p>
+    <!--Button: Import from a file-->
+    <%= form_tag import_admin_products_path, multipart: true do %>
+      <%= file_field_tag :file %>
+      <%= submit_tag "Import Products" %>
+    <% end %>
+  <p align="right">
+    <%= link_to 'Download (csv)', admin_products_path(format: 'csv'), class:"btn btn-sm btn-info", align: "right" %>
+  </p>
+
   <table class="table table-sm table-striped table-bordered table-hover align-middle">
     <thead class="table-dark text-center">
       <tr>

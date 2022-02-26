@@ -17,4 +17,21 @@ class Product < ApplicationRecord
       end
     end
   end
+
+  def self.import_file(file)
+    products = []
+
+    CSV.foreach(file.path, headers: true) do |row|
+      category = Category.find_by(name: row.to_h["product_category"])
+      
+      until category do
+        category_new = { name: row.to_h["product_category"], description: 'TBD' }
+        category = Category.create(category_new)
+      end
+      product = Product.new(row.to_h)
+      product.category_id = category.id
+      products << product
+    end
+    Product.import(products)
+  end
 end
